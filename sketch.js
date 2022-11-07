@@ -29,7 +29,13 @@ function triggerNote(note, midi = true) {
     if (midi) { //midi keyboard input
         try {
             playNote(note.name + note.octave);
-            sphere[note.name].pos.x += -5;
+            if (listen){
+                sphereMaker[note.name].position.x += xAxis;
+                sphereMaker2[note.name].position.x += xAxis;
+                sphereMaker3[note.name].position.x += xAxis;
+                xAxis += 10;
+
+            }
         } catch { }
     } else { //regular keyboard input
         synth.triggerAttack(note.name + note.octave);
